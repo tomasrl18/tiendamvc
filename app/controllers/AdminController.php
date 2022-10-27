@@ -25,11 +25,12 @@ class AdminController extends Controller
         $errors = [];
         $dataForm = [];
 
-        /*if($_SERVER['REQUEST_METHOD'] != 'POST') {
-            this->index();
+        if($_SERVER['REQUEST_METHOD'] != 'POST') {
+            $this->index();
             return;
             header('location:' . ROOT . 'admin');
-        }*/
+        }
+
 
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
