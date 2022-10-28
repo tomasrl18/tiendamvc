@@ -39,6 +39,8 @@ class Cart
 
         $query2 = $this->db->prepare($sql2);
 
+        $new_time = date("Y-m-d H:i:s", strtotime('+2 hours'));
+
         $params2 = [
             ':state' => 0,
             ':user_id' => $user_id,
@@ -46,7 +48,7 @@ class Cart
             ':quantity' => 1,
             ':discount' => $product->discount,
             ':send' => $product->send,
-            ':date' => date('Y-m-d H:i:s'),
+            ':date' => $new_time,
         ];
 
         $query2->execute($params2);
@@ -96,13 +98,16 @@ class Cart
 
     public function closeCart($id, $state)
     {
-        $sql = 'UPDATE carts SET state=:state WHERE user_id=:user_id AND state=0';
+        $sql = 'UPDATE carts SET state=:state, date=:date WHERE user_id=:user_id AND state=0';
 
         $query = $this->db->prepare($sql);
+
+        $new_time = date("Y-m-d H:i:s", strtotime('+2 hours'));
 
         $params = [
           ':user_id' => $id,
           ':state' => $state,
+          ':date' => $new_time,
         ];
 
         return $query->execute($params);
