@@ -21,6 +21,7 @@ class Session
         }
     }
 
+
     public function login($user)
     {
         if ($user) {
