@@ -49,11 +49,9 @@ class Application
             }
 
         } else {
-
             require_once ('../app/controllers/LoginController.php');
             $page = new LoginController();
             $page->index();
-
         }
     }
 

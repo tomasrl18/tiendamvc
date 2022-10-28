@@ -328,9 +328,7 @@ class LoginController extends Controller
                     ];
 
                     $this->view('mensaje', $data);
-
                 }
-
             }
 
         } else {
