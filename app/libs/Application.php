@@ -18,8 +18,12 @@ class Application
 
         if ( ! $this->url_controller ) {
 
-            require_once ('../app/controllers/LoginController.php');
+            /*require_once ('../app/controllers/LoginController.php');
             $page = new LoginController();
+            $page->index();*/
+
+            require_once ('../app/controllers/ShopController.php');
+            $page = new ShopController();
             $page->index();
 
         } else if (file_exists('../app/controllers/' . ucfirst($this->url_controller) . 'Controller.php')) {
@@ -49,8 +53,12 @@ class Application
             }
 
         } else {
-            require_once ('../app/controllers/LoginController.php');
+            /*require_once ('../app/controllers/LoginController.php');
             $page = new LoginController();
+            $page->index();*/
+
+            require_once ('../app/controllers/ShopController.php');
+            $page = new ShopController();
             $page->index();
         }
     }

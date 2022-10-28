@@ -37,9 +37,7 @@ class Mysqldb
             );
 
         } catch (PDOException $error) {
-
             exit('La base de datos no está accesible');
-
         }
     }
 
