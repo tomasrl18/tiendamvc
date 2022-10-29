@@ -17,7 +17,7 @@
             <?php foreach ($data['data'] as $key => $value): ?>
                 <tr>
                     <td>
-                        <img src="<?= ROOT ?>img/<?= $value->image ?>" width="105" alt="<?= $value->name ?>">
+                        <img src="<?= ROOT ?>img/products/<?= $value->image ?>" width="105" alt="<?= $value->name ?>">
                     </td>
 
                     <td>

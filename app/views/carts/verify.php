@@ -41,7 +41,7 @@
             <?php foreach ($data['data'] as $key => $value) : ?>
 
                 <tr>
-                    <td><img src="<?= ROOT ?>img/<?= $value->image ?>" width="105" alt="<?= $value->name ?>"></td>
+                    <td><img src="<?= ROOT ?>img/products/<?= $value->image ?>" width="105" alt="<?= $value->name ?>"></td>
                     <td><b><?= $value->name ?></b><?= substr(html_entity_decode($value->description),0,200) ?>...</td>
                     <td class="text-right"><?= number_format($value->quantity,0) ?></td>
                     <td class="text-right"><?= number_format($value->price,2) ?> &euro;</td>

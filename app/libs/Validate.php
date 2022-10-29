@@ -41,7 +41,7 @@ class Validate
 
     public static function resizeImage($image, $newWidth)
     {
-        $file = 'img/' . $image;
+        $file = 'img/products/' . $image;
 
         // Esta función devuelve un array numérico donde en la posicion 0 está la altura y en la 1 la anchura
         $info = getimagesize($file);
@@ -92,4 +92,23 @@ class Validate
 
         return (bool)(in_array($imageType, [IMAGETYPE_JPEG, IMAGETYPE_PNG]));
     }
+
+    // Borrar imagen
+    /*public function deleteImage()
+    {
+        // Borrar imagen
+        $images = scandir(URL . 'public/img/products/', 0);
+        $dbImages = $this->model->obtainImages();
+
+        foreach($images as $img)
+        {
+            if(!in_array($img, $dbImages)) {
+                // Delete file
+                unlink('img/products/'. $img);
+
+                //print("Deleted file [". $img ."]\n");
+            }
+        }
+        unset($img);
+    }*/
 }

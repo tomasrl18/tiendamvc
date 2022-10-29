@@ -169,7 +169,7 @@ class AdminProductController extends Controller
 
                     $image = strtolower($image);
 
-                    move_uploaded_file($_FILES['image']['tmp_name'], 'img/' . $image);
+                    move_uploaded_file($_FILES['image']['tmp_name'], 'img/products/' . $image);
                     Validate::resizeImage($image, 240);
                 } else {
                     array_push($errors, 'El formato de imagen no es aceptado');
@@ -348,7 +348,7 @@ class AdminProductController extends Controller
 
                     $image = strtolower($image);
 
-                    move_uploaded_file($_FILES['image']['tmp_name'], 'img/' . $image);
+                    move_uploaded_file($_FILES['image']['tmp_name'], 'img/products/' . $image);
                     Validate::resizeImage($image, 240);
 
                 } else {
@@ -388,6 +388,26 @@ class AdminProductController extends Controller
 
                 // Devuelve true o false
                 if ($this->model->updateProduct($dataForm)) {
+
+                    /*if($image != '') {
+                        //Validate::deleteImage();
+
+                        // Borrar imagen
+                        $images = scandir(URL . 'public/img/products/', 0);
+                        $dbImages = $this->model->obtainImages();
+
+                        foreach($images as $img)
+                        {
+                            if( ! in_array($img, $dbImages)) {
+                                // Delete file
+                                unlink('img/products/' . $img);
+
+                                //print("Deleted file [". $img ."]\n");
+                            }
+                        }
+                        unset($img);
+                    }*/
+
                     header('location:' . ROOT . 'AdminProduct');
                 }
 

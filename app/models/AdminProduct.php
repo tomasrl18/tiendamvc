@@ -93,7 +93,7 @@ class AdminProduct
         $sql = 'UPDATE products SET type=:type, name=:name, description=:description, price=:price, discount=:discount, send=:send, published=:published, relation1=:relation1, relation2=:relation2, relation3=:relation3, mostSold=:mostSold, new=:new, status=:status, deleted=:deleted, updated_at=:updated_at, author=:author, publisher=:publisher, pages=:pages, people=:people, objetives=:objetives, necesites=:necesites';
 
         $params = [
-            ':id'	=> $data['id'],
+            ':id' => $data['id'],
             ':type' => $data['type'],
             ':name' => $data['name'],
             ':description' => $data['description'],
@@ -117,7 +117,7 @@ class AdminProduct
             ':necesites' => $data['necesites'],
         ];
 
-        if($data['image']) {
+        if ($data['image']) {
             $sql .= ', image=:image';
             $params[':image'] = $data['image'];
         }
@@ -158,4 +158,14 @@ class AdminProduct
         //return $errors;
         return $query->execute($params);
     }
+
+    /*public function obtainImages()
+    {
+        $sql = 'SELECT image FROM products';
+
+        $query = $this->db->prepare($sql);
+        $query->execute();
+
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }*/
 }
