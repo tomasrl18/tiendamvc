@@ -84,6 +84,7 @@
                     </div>
 
                 </div>
+
                 <div class="form-group text-left">
                     <label for="price">Precio del producto:</label>
 
@@ -91,22 +92,26 @@
                            placeholder="Escribe el precio del producto sin comas ni símbolos" required
                            value="<?= $data['product']->price ?? '' ?>">
                 </div>
+
                 <div class="form-group text-left">
                     <label for="discount">Descuento del producto:</label>
                     <input type="text" name="discount" class="form-control" pattern="^(\d|-)?(\d|,)*\.?\d*$"
                            placeholder="Escribe el descuento del producto sin comas ni símbolos."
                            value="<?= $data['product']->discount ?? '' ?>">
                 </div>
+
                 <div class="form-group text-left">
                     <label for="envio">Coste del envío del producto:</label>
                     <input type="text" name="envio" class="form-control" pattern="^(\d|-)?(\d|,)*\.?\d*$"
                            placeholder="Escribe el costo del envio del producto sin comas ni símbolos."
                            value="<?= $data['product']->send ?? '' ?>">
                 </div>
+
                 <div class="form-group text-left">
                     <label for="image">Imagen del producto:</label>
                     <input type="file" name="image" class="form-control" accept="image/jpeg,image/x-png,image/gif">
                 </div>
+
                 <div class="form-group text-left">
                     <label for="published">Fecha del producto:</label>
                     <input type="date" name="published" class="form-control"
@@ -118,6 +123,7 @@
                     <label for="relation1">Producto relacionado:</label>
                     <select class="form-control" name="relation1" id="relation1">
                         <option value="">Selecciona un producto relacionado</option>
+
                         <?php foreach ($data['catalogue'] as $item) : ?>
                             <option value="<?= $item->id ?>"
                                 <?= (isset($data['product']->relation1) && $data['product']->relation1==$item->id) ? ' selected ' : '' ?>
@@ -125,6 +131,7 @@
                                 <?= $item->name ?>
                             </option>
                         <?php endforeach ?>
+
                     </select>
                 </div>
 

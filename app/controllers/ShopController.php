@@ -73,9 +73,6 @@ class ShopController extends Controller
 
             $this->view('shop/show', $data);
         }
-
-
-
     }
 
     public function whoami()

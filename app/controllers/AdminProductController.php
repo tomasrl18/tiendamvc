@@ -308,7 +308,6 @@ class AdminProductController extends Controller
                 array_push($errors, 'Debe introducir una fecha de alta para el producto');
             }
 
-
             if ($type == 1) {
                 if (empty($people)) {
                     array_push($errors, 'El público objetivo del curso es obligatorio');

@@ -25,9 +25,7 @@ class AdminShopController extends Controller
             $this->view('admin/shop/index', $data);
 
         } else {
-
             header('LOCATION:' . ROOT . 'admin');
-
         }
     }
 }

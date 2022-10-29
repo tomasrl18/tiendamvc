@@ -95,6 +95,10 @@
                     <a href="<?= ROOT ?>adminProduct" class="nav-link text-light">Productos</a>
                 </li>
 
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>adminSales" class="nav-link text-light">Ventas</a>
+                </li>
+
             </ul>
         <?php endif; ?>
 
