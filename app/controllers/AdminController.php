@@ -53,7 +53,7 @@ class AdminController extends Controller
 
                 // No sé qué pasa con esto. Cuándo inicio sesión con admin me da error por esta línea
                 // Es un array de errores
-                // $errors = $this->model->verifyUser($dataForm);
+                $errors = $this->model->verifyUser($dataForm);
 
                 if(! $errors) {
 

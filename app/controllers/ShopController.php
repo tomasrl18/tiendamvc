@@ -11,7 +11,7 @@ class ShopController extends Controller
 
     public function index()
     {
-        //$session = new Session();
+        $session = new Session();
 
         //if ($session->getLogin()) {
 
@@ -26,11 +26,11 @@ class ShopController extends Controller
                 'subtitle2' => 'Artículos nuevos',
                 'news' => $news,
             ];
+
             $this->view('shop/index', $data);
         /*} else {
             header('location:' . ROOT);
         }*/
-
     }
 
     public function logout()

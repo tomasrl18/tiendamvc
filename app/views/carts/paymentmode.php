@@ -5,7 +5,7 @@
 
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Iniciar sesión</a></li>
-                <li class="breadcrumb-item"><a href="#">Datos de envío</a></li>
+                <li class="breadcrumb-item"><a href="<?= ROOT ?>cart/checkout">Datos de envío</a></li>
                 <li class="breadcrumb-item">Forma de pago</li>
                 <li class="breadcrumb-item"><a href="#">Verifica los datos</a></li>
             </ol>

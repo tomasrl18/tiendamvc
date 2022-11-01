@@ -77,7 +77,11 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="<?= ROOT ?>shop/logout" class="nav-link text-light me-2 ms-2">Salir</a>
+                    <?php if(isset($_SESSION['cartTotal'])): ?>
+                        <a href="<?= ROOT ?>shop/logout" class="nav-link text-light me-2 ms-2">Salir</a>
+                    <?php else: ?>
+                        <a href="<?= ROOT ?>login" class="nav-link text-light me-2 ms-2">Iniciar sesión</a>
+                    <?php endif; ?>
                 </li>
 
             </ul>

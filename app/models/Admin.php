@@ -13,7 +13,7 @@ class Admin
     {
         $errors = [];
 
-        $password = hash_hmac('sha512', $data['$password'], ENCRIPTKEY);
+        $password = hash_hmac('sha512', $data['password'], ENCRIPTKEY);
 
         $sql = 'SELECT * FROM admins WHERE email=:email';
 
