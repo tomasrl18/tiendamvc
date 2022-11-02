@@ -52,9 +52,13 @@ class AdminUser
         return $query->rowCount();
     }
 
-    public function getUsers()
+    public function getUsers($userType)
     {
-        $sql = 'SELECT * FROM admins WHERE deleted=0';
+        $sql = 'SELECT * FROM ' . $userType;
+
+        if($userType == 'admins') {
+            $sql .= ' WHERE deleted=0';
+        }
 
         $query = $this->db->prepare($sql);
         $query->execute();

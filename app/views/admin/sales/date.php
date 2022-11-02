@@ -19,7 +19,6 @@
                                value="<?= isset($data['dataForm']['date2']) ? $data['dataForm']['date2'] : '' ?>">
                     </div>
 
-                    <!-- <a href="<?= ROOT ?>adminSales/paramsSelect/" class="btn btn-secondary" type="submit" style="width: 10%; height: 10%">Buscar</a> -->
                     <input class="btn btn-secondary" type="submit" value="Buscar" style="width: 10%; height: 10%" />
                 </div>
             </form>
