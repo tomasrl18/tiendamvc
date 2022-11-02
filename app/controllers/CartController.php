@@ -18,6 +18,10 @@ class CartController extends Controller
             $user_id = $session->getUserId();
             $cart = $this->model->getCart($user_id);
 
+            if(count($cart) == 0) {
+                header('location:' . ROOT . 'shop');
+            }
+
             $data = [
               'titulo' => 'Carrito',
               'menu' => true,
