@@ -10,6 +10,10 @@
             </ol>
         </nav>
 
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped" role="progressbar" aria-label="Default striped example" style="width: 25%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">25%</div>
+        </div>
+
         <div class="card-header">
             <h1>Datos de envío</h1>
             <p>Por favor, compruebe los datos de envío y cambie lo que considere necesario</p>

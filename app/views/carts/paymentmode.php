@@ -2,15 +2,17 @@
 
     <div class="card" id="container">
         <nav aria-label="breadcrumb">
-
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Iniciar sesión</a></li>
                 <li class="breadcrumb-item"><a href="<?= ROOT ?>cart/checkout">Datos de envío</a></li>
                 <li class="breadcrumb-item">Forma de pago</li>
                 <li class="breadcrumb-item"><a href="#">Verifica los datos</a></li>
             </ol>
-
         </nav>
+
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped" role="progressbar" aria-label="Default striped example" style="width: 50%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">50%</div>
+        </div>
 
         <div class="card-header">
             <h1><?= $data['titulo'] ?></h1>

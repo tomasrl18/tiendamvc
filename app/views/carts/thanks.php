@@ -1,5 +1,9 @@
 <?php include_once(VIEWS . 'header.php')?>
 
+    <div class="progress">
+        <div class="progress-bar progress-bar-striped" role="progressbar" aria-label="Default striped example" style="width: 100%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">100%</div>
+    </div>
+
     <div class="card p-4 bg-light mt-3">
 
         <div class="card-header">
