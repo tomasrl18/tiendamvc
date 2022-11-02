@@ -77,7 +77,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <?php if(isset($_SESSION['cartTotal'])): ?>
+                    <?php if(isset($_SESSION['user'])): ?>
                         <a href="<?= ROOT ?>shop/logout" class="nav-link text-light me-2 ms-2">Salir</a>
                     <?php else: ?>
                         <a href="<?= ROOT ?>login" class="nav-link text-light me-2 ms-2">Iniciar sesión</a>

@@ -10,19 +10,20 @@
                     del loginController -->
                     <form action="<?= ROOT ?>login/verifyUser/" method="POST">
 
-                        <div class="form-group text-left">
-                            <label for="user">Usuario:</label>
-                            <input type="text" name="user" class="form-control"
+                        <div class="form-floating mb-3">
+                            <input type="text" name="user" class="form-control" id="floatingInput"
                                    placeholder="Escribe el correo electrónico"
-                            value="<?= isset($data['data']) ? $data['data']['user'] : '' ?>">
+                                   value="<?= isset($data['data']) ? $data['data']['user'] : '' ?>">
+                            <label for="floatingInput">Usuario</label>
                         </div>
 
-                        <div class="form-group text-left">
-                            <label for="password">Clave de acceso:</label>
-                            <input type="password" name="password" class="form-control"
+                        <div class="form-floating mb-3">
+                            <input type="password" name="password" class="form-control" id="floatingInput"
                                    placeholder="Escriba la clave de acceso"
                                    value="<?= $data['data']['password'] ?? '' ?>">
+                            <label for="floatingInput">Clave de acceso</label>
                         </div>
+
 
                         <div class="form-group text-left">
                             <input type="submit" value="Enviar" class="btn btn-success">
