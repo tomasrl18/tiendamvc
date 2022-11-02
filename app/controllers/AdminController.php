@@ -51,8 +51,6 @@ class AdminController extends Controller
 
             if(! $errors) {
 
-                // No sé qué pasa con esto. Cuándo inicio sesión con admin me da error por esta línea
-                // Es un array de errores
                 $errors = $this->model->verifyUser($dataForm);
 
                 if(! $errors) {

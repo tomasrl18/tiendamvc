@@ -71,7 +71,7 @@ class Cart
 
     public function update($user , $product, $quantity)
     {
-        $sql = 'UPDATE carts SET quantity=:quantity WHERE user_id=:user_id AND product_id=:product_id';
+        $sql = 'UPDATE carts SET quantity=:quantity WHERE user_id=:user_id AND product_id=:product_id AND state=0';
         $query = $this->db->prepare($sql);
         $params = [
             ':user_id' => $user,
@@ -84,7 +84,7 @@ class Cart
 
     public function delete($product, $user)
     {
-        $sql = 'DELETE FROM carts WHERE user_id=:user_id AND product_id=:product_id';
+        $sql = 'DELETE FROM carts WHERE user_id=:user_id AND product_id=:product_id AND state=0';
 
         $query = $this->db->prepare($sql);
 

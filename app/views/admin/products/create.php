@@ -1,6 +1,6 @@
 <?php include_once(VIEWS . 'header.php')?>
 <script src="https://cdn.ckeditor.com/ckeditor5/35.2.0/classic/ckeditor.js"></script>
-<script src="<?= ROOT . 'js/adminCreateProduct.js' ?>"></script>
+<script defer src="<?= ROOT . 'js/adminCreateProduct.js' ?>"></script>
 <div class="card p-4 bg-light mt-3">
 
     <div class="card-header">
@@ -14,7 +14,7 @@
                 <label for="type">Tipo de producto</label>
                 <select name="type" id="type" class="form-control">
 
-                    <option value="" disabled>Selecciona el tipo de producto</option>
+
                     <?php foreach($data['type'] as $type): ?>
                         <option value="<?= $type->value ?>"
                             <?= (isset($data['data']['type']) && $data['data']['type'] == $type->value) ? ' selected' : ''?>
@@ -93,6 +93,7 @@
                        placeholder="Escribe el precio del producto sin comas ni símbolos" required
                        value="<?= $data['data']['price'] ?? '' ?>">
             </div>
+
             <div class="form-group text-left">
                 <label for="discount">Descuento del producto:</label>
                 <input type="text" name="discount" class="form-control" pattern="^(\d|-)?(\d|,)*\.?\d*$"

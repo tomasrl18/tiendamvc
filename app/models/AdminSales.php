@@ -11,18 +11,15 @@ class AdminSales
 
     public function show()
     {
-        // Mi select
-        /*$sql = 'SELECT carts.*, products.price, products.name, users.first_name, users.id
-                FROM carts 
-                JOIN products 
-                ON carts.product_id=products.id 
-                JOIN users 
-                ON carts.user_id=users.id 
-                WHERE carts.state=1
-                ORDER BY carts.date';*/
+        // Select de Marmol
+        /*$sql = 'SELECT carts.id cart_id , users.id user_id , users.first_name , carts.product_id product_id ,
+        products.name , carts.date, carts.send , carts.discount, carts.quantity , products.price
+        FROM carts JOIN users ON carts.user_id = users.id JOIN products ON products.id = carts.product_id
+        WHERE carts.state=1 ORDER BY carts.date';*/
 
-        // Mi select modificado
-        $sql = 'SELECT carts.*, products.price, users.first_name, users.id
+
+        // Mi select
+        $sql = 'SELECT carts.*, products.price, products.name, users.first_name, users.id
                 FROM carts 
                 JOIN products 
                 ON carts.product_id=products.id 
@@ -31,17 +28,45 @@ class AdminSales
                 WHERE carts.state=1
                 ORDER BY carts.date';
 
-        // Select de Marmol
-        /*$sql = 'SELECT carts.id cart_id , users.id user_id , users.first_name , carts.product_id product_id ,
-        products.name , carts.date, carts.send , carts.discount, carts.quantity , products.price
-        FROM carts JOIN users ON carts.user_id = users.id JOIN products ON products.id = carts.product_id
-        WHERE carts.state=1 ORDER BY carts.date';*/
-
-
-
         $query = $this->db->prepare($sql);
 
         $query->execute();
+
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public function findSalesByData($data)
+    {
+        $sql = 'SELECT carts.*, products.price, users.first_name, users.id
+                FROM carts 
+                JOIN products 
+                ON carts.product_id=products.id 
+                JOIN users 
+                ON carts.user_id=users.id 
+                WHERE carts.state=1';
+
+        if($data['date1'] != '') {
+            $sql .= ' AND carts.date>=:date1';
+        }
+
+        if($data['date2'] != '') {
+            $sql .= ' AND carts.date<:date2';
+        }
+
+        $sql .= ' ORDER BY carts.date';
+
+        $query = $this->db->prepare($sql);
+
+        $params = [
+            ':date1' => $data['date1'],
+            ':date2' => $data['date2'],
+        ];
+
+        if(count($params) == 0) {
+            $query->execute();
+        } else {
+            $query->execute($params);
+        }
 
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
