@@ -16,8 +16,6 @@ class AdminSalesController extends Controller
         if($session->getLogin()) {
 
             $sales = $this->model->show();
-            //$carts = $this->model->groupCarts($sales);
-            //$products = $this->model->ahoraPiensoUnNombre();
 
             $data = [
                 'titulo' => 'Bienvenid@ a la administración de ventas',
@@ -25,8 +23,6 @@ class AdminSalesController extends Controller
                 'menu' => false,
                 'admin' => true,
                 'data' => $sales,
-                //'products' => $products,
-                //'data' => $carts,
             ];
 
             $this->view('admin/sales/index', $data);
@@ -36,7 +32,7 @@ class AdminSalesController extends Controller
     }
 
     // Pensar otro nombre
-    public function paramsSelect()
+    public function findByDate()
     {
         $errors = [];
         $dataForm = [];
@@ -45,6 +41,21 @@ class AdminSalesController extends Controller
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $date1 = $_POST['date1'] ?? '';
             $date2 = $_POST['date2'] ?? '';
+
+            if($date1 == '' && $date2 == '') {
+                $sales = $this->model->show();
+
+                $data = [
+                    'titulo' => 'Bienvenid@ a la administración de ventas',
+                    'subtitle' => 'Administración de Ventas',
+                    'menu' => false,
+                    'admin' => true,
+                    'errors' => $errors,
+                    'data' => $sales,
+                ];
+
+                $this->view('admin/sales/index', $data);
+            }
 
             if($date1 == '') {
                 array_push($errors, 'Es necesario introducir dos fechas');
@@ -103,4 +114,72 @@ class AdminSalesController extends Controller
 
         $this->view('admin/sales/date', $data);*/
     }
+
+    /*public function findByID()
+    {
+        $errors = [];
+        $dataForm = [];
+        $sales = [];
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $id = $_POST['id'] ?? '';
+
+            if($id = '') {
+                $sales = $this->model->show();
+
+                $data = [
+                    'titulo' => 'Bienvenid@ a la administración de ventas',
+                    'subtitle' => 'Administración de Ventas',
+                    'menu' => false,
+                    'admin' => true,
+                    'errors' => $errors,
+                    'data' => $sales,
+                ];
+
+                $this->view('admin/sales/index', $data);
+            }
+
+            if( ! $this->model->validateID($id)) {
+                array_push($errors, 'El id introducido no existe en la base de datos');
+            }
+
+            if( ! is_numeric($id)) {
+                array_push($errors, 'El id debe ser un número');
+            }
+
+            if($id < 0) {
+                array_push($errors, 'Introduzca un id válido');
+            }
+
+            if(count($errors) > 0) {
+                $sales = $this->model->show();
+
+                $data = [
+                    'titulo' => 'Bienvenid@ a la administración de ventas',
+                    'subtitle' => 'Administración de Ventas',
+                    'menu' => false,
+                    'admin' => true,
+                    'errors' => $errors,
+                    'data' => $sales,
+                ];
+
+                $this->view('admin/sales/index', $data);
+            } else {
+                $dataForm = [ 'id' => $id, ];
+
+                $sales = $this->model->findSalesByID($dataForm);
+
+                $data = [
+                    'titulo' => 'Bienvenid@ a la administración de ventas',
+                    'subtitle' => 'Administración de Ventas',
+                    'menu' => false,
+                    'admin' => true,
+                    'data' => $sales,
+                    'dataForm' => $dataForm,
+                ];
+
+                $this->view('admin/sales/date', $data);
+            }
+        }
+    }*/
 }

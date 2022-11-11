@@ -5,7 +5,7 @@
         <div class="card-header">
             <h1 class="text-center"><?= $data['subtitle'] ?></h1>
 
-            <form action="<?= ROOT ?>adminSales/paramsSelect/" method="POST">
+            <form action="<?= ROOT ?>adminSales/findByDate/" method="POST">
                 <div class="row">
                     <div class="input-group mb-3" style="width: 20%">
                         <label for="date1" type="hidden" class="input-group-text">De</label>
@@ -23,6 +23,20 @@
                 </div>
             </form>
 
+            <form action="<?= ROOT ?>adminSales/findByID/" method="POST">
+                <div class="row">
+
+                    <div class="input-group mb-3" style="width: 20%">
+                        <label for="id" class="input-group-text">ID</label>
+                        <input type="number" name="id" id="id" class="form-control" placeholder="Introduzca un id">
+                    </div>
+
+                    <input class="btn btn-secondary" type="submit" value="Buscar" style="width: 10%; height: 10%" />
+
+                </div>
+            </form>
+
+
         </div>
 
         <div class="card-body">
@@ -30,6 +44,7 @@
                 <thead>
                 <th>Id Usuario</th>
                 <th>Nombre Usuario</th>
+                <th>Productos</th>
                 <th>Fecha de compra</th>
                 <th>Valor total de la compra</th>
                 <th></th>
@@ -39,10 +54,11 @@
                 <?php foreach ($data['data'] as $value): ?>
 
                     <tr>
-                        <td class="text-center"> <?= $value->id ?> </td>
+                        <td class="text-center"> <?= $value->user_id ?> </td>
                         <td class="text-center"> <?= $value->first_name ?> </td>
+                        <td class="text-center"> <?= $value->productos ?> </td>
                         <td class="text-center"> <?= $value->date ?> </td>
-                        <td class="text-center"> <?= $value->price ?> &euro;</td>
+                        <td class="text-center"> <?= $value->total ?> &euro;</td>
 
                         <td class="text-center">
                             <a href="<?= ROOT ?>adminSales/details/" class="btn btn-primary">
