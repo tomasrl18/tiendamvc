@@ -59,10 +59,11 @@
                         <td class="text-center"> <?= $value->total ?> &euro;</td>
 
                         <td class="text-center">
-                            <a href="<?= ROOT ?>adminSales/details/" class="btn btn-primary">
+                            <a href="<?= ROOT ?>adminSales/details/<?= $value->user_id ?>/<?= $value->id ?>" class="btn btn-primary">
                                 Detalles
                             </a>
                         </td>
+
                     </tr>
 
                 <?php endforeach; ?>

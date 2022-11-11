@@ -31,7 +31,32 @@ class AdminSalesController extends Controller
         }
     }
 
-    // Pensar otro nombre
+    public function details($user_id, $cart_id)
+    {
+        $session = new SessionAdmin();
+
+        if($session->getLogin()) {
+            $date = $this->model->getSaleDate($user_id, $cart_id);
+            $details = $this->model->details($user_id, $date);
+
+            /*if(count($details) == 0) {
+                header('location:' . ROOT . 'admin/sales');
+            }*/
+
+            $data = [
+                'titulo' => 'Detalles del carrito',
+                'menu' => false,
+                'admin' => true,
+                'user_id' => $user_id,
+                'data' => $details,
+            ];
+
+            $this->view('admin/sales/details', $data);
+        } else {
+            header('location:' . ROOT . 'admin/sales');
+        }
+    }
+
     public function findByDate()
     {
         $errors = [];

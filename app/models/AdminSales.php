@@ -11,7 +11,7 @@ class AdminSales
 
     public function show()
     {
-        $sql = "SELECT carts.user_id, users.first_name, GROUP_CONCAT(products.name SEPARATOR ', ') as productos, 
+        $sql = "SELECT carts.id, carts.user_id, users.first_name, GROUP_CONCAT(products.name SEPARATOR ', ') as productos, 
                         ROUND(SUM(products.price*carts.quantity), 2) as total, carts.date 
                 FROM carts 
                 JOIN users 
@@ -28,9 +28,49 @@ class AdminSales
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
 
+    public function getUserId()
+    {
+
+    }
+
+    public function getSaleDate($user_id, $cart_id)
+    {
+        $sql = 'SELECT date FROM carts WHERE state=1 AND user_id=:user_id AND id=:cart_id';
+
+        $query = $this->db->prepare($sql);
+
+        $params = [
+          'user_id' => $user_id,
+          'cart_id' => $cart_id,
+        ];
+
+        $query->execute($params);
+
+        return $query->fetch(PDO::FETCH_OBJ);
+    }
+
+    public function details($user_id, $date)
+    {
+        $sql = 'SELECT c.user_id as user, c.product_id as product, c.quantity as quantity, 
+                    c.send as send, c.discount as discount, p.price as price, p.image as image, p.description as description,
+                    p.name as name FROM carts as c, products as p 
+                       WHERE c.user_id=:user_id AND state=1 AND c.product_id=p.id AND c.date=:date';
+
+        $query = $this->db->prepare($sql);
+
+        $params = [
+            ':user_id' => $user_id,
+            ':date' => $date->date,
+        ];
+
+        $query->execute($params);
+
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }
+
     public function findSalesByData($data)
     {
-        $sql = "SELECT carts.user_id, users.first_name, GROUP_CONCAT(products.name SEPARATOR ', ') as productos, 
+        $sql = "SELECT carts.id, carts.user_id, users.first_name, GROUP_CONCAT(products.name SEPARATOR ', ') as productos, 
                         ROUND(SUM(products.price*carts.quantity), 2) as total, carts.date 
                 FROM carts 
                 JOIN users 
@@ -103,9 +143,4 @@ class AdminSales
 
         return $query->fetchAll(PDO::FETCH_OBJ);
     }*/
-
-    public function details()
-    {
-        
-    }
 }
