@@ -77,6 +77,7 @@ class Validate
     {
         $search = ['^', 'delete', 'drop', 'truncate', 'exec', 'system'];
         $replace = ['-', 'dele*te', 'dr*op', 'trunca*te', 'ex*ec', 'syst*em'];
+
         $string = str_replace($search, $replace, $string);
         $string = addslashes(htmlentities($string));
 
@@ -90,7 +91,7 @@ class Validate
         $imageArray = getimagesize($file);
         $imageType = $imageArray[2];
 
-        return (bool)(in_array($imageType, [IMAGETYPE_JPEG, IMAGETYPE_PNG]));
+        return (bool) (in_array($imageType, [IMAGETYPE_JPEG, IMAGETYPE_PNG]));
     }
 
     // Borrar imagen

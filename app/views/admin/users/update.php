@@ -37,6 +37,7 @@
 
                 <div class="form-group text-left">
                     <label for="status">Selecciona un estado</label>
+
                     <select name="status" id="status" class="form-control">
                         <option value="">Selecciona el estado del usuario</option>
                         <?php foreach ($data['status'] as $status): ?>

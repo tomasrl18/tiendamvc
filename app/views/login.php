@@ -12,7 +12,7 @@
 
                         <div class="form-floating mb-3">
                             <input type="text" name="user" class="form-control" id="floatingInput"
-                                   placeholder="Escribe el correo electrónico"
+                                   placeholder="Escriba el correo electrónico"
                                    value="<?= isset($data['data']) ? $data['data']['user'] : '' ?>">
                             <label for="floatingInput">Usuario</label>
                         </div>
