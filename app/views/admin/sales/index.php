@@ -5,7 +5,7 @@
         <div class="card-header">
             <h1 class="text-center"><?= $data['subtitle'] ?></h1>
 
-            <form action="<?= ROOT ?>adminSales/findByDate/" method="POST">
+            <form action="<?= ROOT ?>adminSales/findByData/" method="POST">
                 <div class="row">
 
                     <div class="input-group mb-3" style="width: 20%">
@@ -20,9 +20,20 @@
 
                     <input class="btn btn-secondary" type="submit" value="Buscar" style="width: 10%; height: 10%" />
                 </div>
+
+                <!-- <div class="row">
+
+                    <div class="input-group mb-3" style="width: 20%">
+                        <label for="id" class="input-group-text">ID</label>
+                        <input type="number" name="id" id="id" class="form-control" placeholder="Introduzca un id">
+                    </div>
+
+                    <input class="btn btn-secondary" type="submit" value="Buscar" style="width: 10%; height: 10%" />
+
+                </div> -->
             </form>
 
-            <form action="<?= ROOT ?>adminSales/findByID/" method="POST">
+            <!--<form action="(aquí va código php con root)adminSales/findByID/" method="POST">
                 <div class="row">
 
                     <div class="input-group mb-3" style="width: 20%">
@@ -33,7 +44,7 @@
                     <input class="btn btn-secondary" type="submit" value="Buscar" style="width: 10%; height: 10%" />
 
                 </div>
-            </form>
+            </form> -->
 
         </div>
 

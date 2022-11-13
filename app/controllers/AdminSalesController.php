@@ -57,7 +57,7 @@ class AdminSalesController extends Controller
         }
     }
 
-    public function findByDate()
+    public function findByData()
     {
         $errors = [];
         $dataForm = [];
@@ -66,9 +66,10 @@ class AdminSalesController extends Controller
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $date1 = $_POST['date1'] ?? '';
             $date2 = $_POST['date2'] ?? '';
+            //$id = $_POST['id'] ?? '' ;
 
             if($date1 == '' && $date2 == '') {
-                $sales = $this->model->show();
+                /*$sales = $this->model->show();
 
                 $data = [
                     'titulo' => 'Bienvenid@ a la administración de ventas',
@@ -79,20 +80,35 @@ class AdminSalesController extends Controller
                     'data' => $sales,
                 ];
 
-                $this->view('admin/sales/index', $data);
+                $this->view('admin/sales/index', $data);*/
+                header('location:' . ROOT . 'adminSales');
             }
 
-            if($date1 == '') {
+            if($date1 == '' || $date2 == '') {
                 array_push($errors, 'Es necesario introducir dos fechas');
             }
 
-            if($date2 == '') {
+            /*if($date2 == '') {
                 array_push($errors, 'Es necesario introducir dos fechas');
-            }
+            }*/
 
             if($date2 <= $date1) {
                 array_push($errors, 'La segunda fecha no puede ser menor o igual a la primera fecha');
             }
+
+            /*if($id != '') {
+                if( ! $this->model->validateID($id)) {
+                    array_push($errors, 'El id introducido no existe en la base de datos');
+                }
+
+                if( ! is_numeric($id)) {
+                    array_push($errors, 'El id debe ser un número');
+                }
+
+                if($id < 0) {
+                    array_push($errors, 'Introduzca un id válido');
+                }
+            }*/
 
             if(count($errors) > 0) {
                 $sales = $this->model->show();
@@ -111,6 +127,7 @@ class AdminSalesController extends Controller
                 $dataForm = [
                     'date1' => $date1,
                     'date2' => $date2,
+                    //'id' => $id,
                 ];
 
                 $sales = $this->model->findSalesByData($dataForm);

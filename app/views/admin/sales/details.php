@@ -29,7 +29,7 @@
                     <td class="text-end">
                         <input type="number" name="c<?= $key ?>" class="text-right"
                                value="<?= number_format($value->quantity, 0) ?>"
-                               min="1" max="99">
+                               min="1" max="99" disabled>
                         <input type="hidden" name="i<?= $key ?>" value="<?= $value->product ?>">
                     </td>
 
@@ -86,5 +86,9 @@
 
         </table>
     </form>
+
+    <div class="alert mt-3 text-center">
+        <a href="<?= ROOT ?>adminSales" class="btn btn-success">Regresar</a>
+    </div>
 
 <?php include_once(VIEWS . 'footer.php') ?>

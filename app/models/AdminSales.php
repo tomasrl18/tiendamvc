@@ -87,6 +87,10 @@ class AdminSales
             $sql .= ' AND carts.date<:date2';
         }
 
+        /*if($data['id'] != '') {
+            $sql .= ' AND users.id=:id';
+        }*/
+
         $sql .= ' GROUP BY carts.date ORDER BY carts.date';
 
         $query = $this->db->prepare($sql);
@@ -94,6 +98,7 @@ class AdminSales
         $params = [
             ':date1' => $data['date1'],
             ':date2' => $data['date2'],
+            //':id' => $data['id'],
         ];
 
         if(count($params) == 0) {
