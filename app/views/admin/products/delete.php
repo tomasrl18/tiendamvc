@@ -19,18 +19,24 @@
                     </select>
                 </div>
 
+                <br>
+
                 <div class="form-group text-left">
                     <label for="name">Nombre:</label>
                     <input type="text" name="name" class="form-control" disabled
                            value="<?= (isset($data['product']->name)) ? $data['product']->name : '' ?>">
                 </div>
 
-                <div class="form-group text-left">
-                    <!-- Del profe (EL problema es que no redirecciona al listado de productos) -->
-                    <input type="submit" value="Si" class="btn btn-danger">
+                <br>
 
-                    <a href="<?= ROOT ?>adminProduct" class="btn btn-info">No</a>
-                    <p>Una vez borrado, la información no será recuperable.</p>
+                <div class="form-group text-center">
+                    <hr>
+                    <p class="text-center" style="font-size: 20px"><b>Una vez borrado el producto, no será recuperable.</b></p>
+                    <hr>
+
+                    <input type="submit" value="Si" class="btn btn-danger" style="width: 10%">
+
+                    <a href="<?= ROOT ?>adminProduct" class="btn btn-info" style="width: 10%">No</a>
                 </div>
 
             </form>

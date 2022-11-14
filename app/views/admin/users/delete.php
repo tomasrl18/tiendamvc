@@ -43,4 +43,6 @@
         </div>
     </div>
 
+
+
 <?php include_once(VIEWS . 'footer.php')?>

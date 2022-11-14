@@ -2,15 +2,14 @@
 
 <h2 class="text-center"><?= $data['data']->name ?></h2>
 
-<img src="<?= ROOT ?>img/<?= $data['data']->image ?>" class="rounded float-right" alt="">
+<img src="<?= ROOT ?>img/products/<?= $data['data']->image ?>" class="rounded float-right" alt="">
 <h4>Precio:</h4>
 <p><?= number_format($data['data']->price, 2) ?>&euro;</p>
 
 <?php if($data['data']->type == 1): ?>
 
     <h4>Descripción:</h4>
-
-    <?php html_entity_decode($data['data']->description) ?>
+    <p><?= html_entity_decode($data['data']->description) ?></p>
 
     <h4>¿A quién va dirigido?</h4>
     <p><?= $data['data']->people ?></p>

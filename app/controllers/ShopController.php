@@ -77,10 +77,9 @@ class ShopController extends Controller
 
     public function whoami()
     {
-        $session = new Session();
+        /*$session = new Session();*/
 
         /*if ($session->getLogin()) {*/
-
             $data = [
                 'titulo' => 'Quienes somos',
                 'menu' => true,

@@ -10,12 +10,12 @@
 
                     <div class="input-group mb-3" style="width: 20%">
                         <label for="date1" type="hidden" class="input-group-text">De</label>
-                        <input type="date" name="date1" id="date1" class="form-control" placeholder="Búsqueda por fecha...">
+                        <input type="date" name="date1" id="date1" class="form-control">
                     </div>
 
                     <div class="input-group mb-3" style="width: 20%">
                         <label for="date2" type="hidden" class="input-group-text">A</label>
-                        <input type="date" name="date2" id="date2" class="form-control" placeholder="Busqueda por fecha...">
+                        <input type="date" name="date2" id="date2" class="form-control">
                     </div>
 
                     <input class="btn btn-secondary" type="submit" value="Buscar" style="width: 10%; height: 10%" />

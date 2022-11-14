@@ -2,7 +2,7 @@
 
 <?php $verify = false; $subtotal = 0; $send = 0; $discount = 0; $user_id = $data['user_id'] ?>
 
-    <h2 class="text-center">Detalles del carrito</h2>
+    <h2 class="text-center"><?= $data['subtitle'] ?></h2>
     <form action="<?= ROOT ?>adminSales/details/" method="POST">
         <table class="table table-stripped" width="100%">
 
@@ -85,6 +85,7 @@
             </tr>
 
         </table>
+        <hr>
     </form>
 
     <div class="alert mt-3 text-center">

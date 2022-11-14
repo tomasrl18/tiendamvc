@@ -44,7 +44,8 @@ class AdminSalesController extends Controller
             }*/
 
             $data = [
-                'titulo' => 'Detalles del carrito',
+                'titulo' => 'Detalles de la compra',
+                'subtitle' => 'Detalles de la compra',
                 'menu' => false,
                 'admin' => true,
                 'user_id' => $user_id,
