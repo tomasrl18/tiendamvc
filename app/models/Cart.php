@@ -34,8 +34,8 @@ class Cart
 
         $product = $query->fetch(PDO::FETCH_OBJ);
 
-        $sql2 = 'INSERT INTO carts(state, user_id, product_id, quantity, discount, send, date)
-                    VALUES (:state, :user_id, :product_id, :quantity, :discount, :send, :date)';
+        $sql2 = 'INSERT INTO carts(state, user_id, product_id, quantity, discount, send, price, date)
+                    VALUES (:state, :user_id, :product_id, :quantity, :discount, :send, :price, :date)';
 
         $query2 = $this->db->prepare($sql2);
 
@@ -48,6 +48,7 @@ class Cart
             ':quantity' => 1,
             ':discount' => $product->discount,
             ':send' => $product->send,
+            ':price' => $product->price,
             ':date' => $new_time,
         ];
 
@@ -95,6 +96,13 @@ class Cart
 
         return $query->execute($params);
     }
+
+    /*public function getProductPrice()
+    {
+        $sql = 'SELECT price FROM ';
+
+        $query = $this->db->prepare($sql);
+    }*/
 
     public function closeCart($id, $state)
     {
