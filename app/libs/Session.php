@@ -34,10 +34,12 @@ class Session
     {
         unset($_SESSION['user']);
         unset($this->user);
+        unset($_SESSION['cartTotal']);
+        unset($this->cartTotal);
 
         // Comentada porque si tienes iniciadas la sesión de admin y de user, y
         // cierras sesión en unas de las dos, se cierran las dos
-        //session_destroy();
+        // session_destroy();
 
         $this->login = false;
     }
