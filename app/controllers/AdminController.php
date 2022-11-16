@@ -55,7 +55,9 @@ class AdminController extends Controller
 
                 if(! $errors) {
 
-                    // Aquí la diferencia de usuarios
+                    /*
+                     * Diferencia de usuario normal y administrador
+                     */
                     $session = new SessionAdmin();
                     $session->login($dataForm);
 

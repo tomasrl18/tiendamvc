@@ -11,6 +11,9 @@ class AdminProductController extends Controller
 
     public function index()
     {
+        /*
+         * SessionAdmin en vez de Session para hacer la distinción
+         */
         $session = new SessionAdmin();
 
         if($session->getLogin()) {
@@ -27,7 +30,6 @@ class AdminProductController extends Controller
             ];
 
             $this->view('admin/products/index', $data);
-
         } else {
             header('location:' . ROOT . 'admin');
         }
@@ -317,7 +319,6 @@ class AdminProductController extends Controller
                 if (empty($necesites)) {
                     array_push($errors, 'Los requisitos del curso son necesarios');
                 }
-
             } elseif ($type == 2) {
                 if (empty($author)) {
                     array_push($errors, 'El autor del libro es necesario');

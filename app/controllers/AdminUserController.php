@@ -63,11 +63,13 @@ class AdminUserController extends Controller
 
             if(empty($password)) {
                 array_push($errors, 'La clave de acceso es requerida');
-            } elseif( ! preg_match($pattern, $password)) {
+            }
+
+            /*if( ! preg_match($pattern, $password)) {
                 array_push($errors, 'La contraseña debe tener al entre 8 y 16 caracteres, 
                                                     al menos un dígito, una minúscula, una mayúscula 
                                                     y un carácter no alfanumérico.');
-            }
+            }*/
 
             if(empty($password2)) {
                 array_push($errors, 'Repetir la clave de acceso es requerida');
@@ -83,7 +85,7 @@ class AdminUserController extends Controller
                 } else {
 
                     $data = [
-                        'titulo' => 'Error en la creación de un usuario administrador',
+                        'titulo' => 'Error creación administrador',
                         'menu' => false,
                         'errors' => [],
                         'subtitle' => 'Error al crear un nuevo usuario administrador',
