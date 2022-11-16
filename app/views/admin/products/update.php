@@ -4,7 +4,7 @@
     <div class="card p-4 bg-light mt-3">
 
         <div class="card-header">
-            <h1 class="text-center">Alta de un producto</h1>
+            <h1 class="text-center">Edición del producto</h1>
         </div>
 
         <div class="card-body">
