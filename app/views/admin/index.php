@@ -10,7 +10,7 @@
         <form action="<?= ROOT ?>admin/verifyUser" method="post">
 
             <div class="form-floating mb-3">
-                <input type="text" name="user" class="form-control" id="floatingInput"
+                <input type="email" name="user" class="form-control" id="floatingInput"
                        placeholder="Escriba el correo electrónico"
                        value="<?= $data['data']['user'] ?? '' ?>">
                 <label for="floatingInput">Usuario</label>
