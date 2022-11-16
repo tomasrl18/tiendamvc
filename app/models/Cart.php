@@ -34,8 +34,11 @@ class Cart
 
         $product = $query->fetch(PDO::FETCH_OBJ);
 
-        $sql2 = 'INSERT INTO carts(state, user_id, product_id, quantity, discount, send, price, date)
-                    VALUES (:state, :user_id, :product_id, :quantity, :discount, :send, :price, :date)';
+        $sql2 = 'INSERT INTO carts(state, user_id, product_id, quantity, discount, send, date)
+                    VALUES (:state, :user_id, :product_id, :quantity, :discount, :send, :date)';
+
+        /*$sql2 = 'INSERT INTO carts(state, user_id, product_id, quantity, discount, send, price, date)
+                    VALUES (:state, :user_id, :product_id, :quantity, :discount, :send, :price, :date)';*/
 
         $query2 = $this->db->prepare($sql2);
 
@@ -48,7 +51,7 @@ class Cart
             ':quantity' => 1,
             ':discount' => $product->discount,
             ':send' => $product->send,
-            ':price' => $product->price,
+            //':price' => $product->price,
             ':date' => $new_time,
         ];
 
@@ -74,6 +77,7 @@ class Cart
     {
         $sql = 'UPDATE carts SET quantity=:quantity WHERE user_id=:user_id AND product_id=:product_id AND state=0';
         $query = $this->db->prepare($sql);
+
         $params = [
             ':user_id' => $user,
             ':product_id' => $product,
@@ -119,5 +123,16 @@ class Cart
         ];
 
         return $query->execute($params);
+    }
+
+    public function getPayments()
+    {
+        $sql = 'SELECT * FROM payments';
+
+        $query = $this->db->prepare($sql);
+
+        $query->execute();
+
+        return $query->fetchAll(PDO::FETCH_OBJ);
     }
 }

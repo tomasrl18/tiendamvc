@@ -11,7 +11,8 @@
         </nav>
 
         <div class="progress">
-            <div class="progress-bar progress-bar-striped" role="progressbar" aria-label="Default striped example" style="width: 50%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">50%</div>
+            <div class="progress-bar progress-bar-striped" role="progressbar" aria-label="Default striped example"
+                 style="width: 50%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">50%</div>
         </div>
 
         <div class="card-header">
@@ -23,29 +24,16 @@
             <form action="<?= ROOT ?>cart/verify/" method="POST">
                 <div class="form-group text-left">
 
-                    <div class="radio">
-                        <label><input type="radio" name="payment" value="cc1"> Tarjeta de crédito MasterCard</label>
-                    </div>
+                    <?php foreach ($data['payments'] as $payment): ?>
 
-                    <div class="radio">
-                        <label><input type="radio" name="payment" value="cc2"> Tarjeta de crédito Visa</label>
-                    </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="payment"> <?= $payment->tipo ?>
+                            </label>
+                        </div>
 
-                    <div class="radio">
-                        <label><input type="radio" name="payment" value="dc"> Tarjeta de débito</label>
-                    </div>
+                    <?php endforeach; ?>
 
-                    <div class="radio">
-                        <label><input type="radio" name="payment" value="cash"> Efectivo</label>
-                    </div>
-
-                    <div class="radio">
-                        <label><input type="radio" name="payment" value="paypal"> Paypal</label>
-                    </div>
-
-                    <div class="radio">
-                        <label><input type="radio" name="payment" value="bitcoins"> Bitcoins</label>
-                    </div>
                 </div>
 
                 <div class="form-group text-left">

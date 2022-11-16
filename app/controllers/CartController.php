@@ -159,7 +159,7 @@ class CartController extends Controller
 
             if($user->email != $email) {
                 if(empty($email)) {
-                    array_push($errors, 'El email apellido es requerido');
+                    array_push($errors, 'El email es requerido');
                 } else {
                     $user->email = $email;
                 }
@@ -183,7 +183,7 @@ class CartController extends Controller
 
             if($user->state != $state) {
                 if(empty($state)) {
-                    array_push($errors, 'El email apellido es requerido');
+                    array_push($errors, 'La provincia es requerida');
                 } else {
                     $user->state = $state;
                 }
@@ -191,7 +191,7 @@ class CartController extends Controller
 
             if($user->zipcode != $postcode) {
                 if($postcode == 0) {
-                    array_push($errors, 'El email apellido es requerido');
+                    array_push($errors, 'El código postal es requerido');
                 } else {
                     $user->zipcode = $postcode;
                 }
@@ -199,34 +199,36 @@ class CartController extends Controller
 
             if($user->country != $country) {
                 if(empty($country)) {
-                    array_push($errors, 'El email apellido es requerido');
+                    array_push($errors, 'El país es requerido');
                 } else {
                     $user->country = $country;
                 }
             }
         }
 
-            if (count($errors) > 0) {
-                $data = [
-                    'titulo' => 'Carrito | Checkout',
-                    'subtitle' => 'Checkout | Iniciar Sesión',
-                    'menu' => true,
-                    'data' => $user,
-                    'errors' => $errors,
-                ];
+        if (count($errors) > 0) {
+            $data = [
+                'titulo' => 'Carrito | Checkout',
+                'subtitle' => 'Checkout | Iniciar Sesión',
+                'menu' => true,
+                'data' => $user,
+                'errors' => $errors,
+            ];
 
-                $this->view('carts/address', $data);
-            } else {
-                $session->login($user);
+            $this->view('carts/address', $data);
+        } else {
+            $session->login($user);
+            $payments = $this->model->getPayments();
 
-                $data = [
-                    'titulo' => 'Carrito | Forma de Pago',
-                    'subtitle' => 'Checkout | Forma de Pago',
-                    'menu' => true,
-                ];
+            $data = [
+                'titulo' => 'Carrito | Forma de Pago',
+                'subtitle' => 'Checkout | Forma de Pago',
+                'menu' => true,
+                'payments' => $payments,
+            ];
 
-                $this->view('carts/paymentmode', $data);
-            }
+            $this->view('carts/paymentmode', $data);
+        }
     }
 
     public function verify()
@@ -238,6 +240,8 @@ class CartController extends Controller
 
         $user = $session->getUser();
         $cart = $this->model->getCart($user->id);
+        $payments = $this->model->getPayments();
+
         $payment = $_POST['payment'] ?? '';
 
         if(empty($payment)) {
@@ -249,6 +253,7 @@ class CartController extends Controller
                 'titulo' => 'Carrito | Forma de pago',
                 'menu' => true,
                 'errors' => $errors,
+                'payments' => $payments,
             ];
 
             $this->view('carts/paymentmode', $data);
