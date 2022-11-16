@@ -8,7 +8,6 @@ window.onload = function() {
         document.getElementById("course").style.display = "block";
     }
 
-
     //detectamos el cambio en el select
     document.getElementById("type").onchange = function() {
         if (this.value == 1) {

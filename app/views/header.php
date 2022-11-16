@@ -58,6 +58,7 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
+
             <div class="d-flex justify-content-end">
 
                 <?php if(isset($_SESSION['cartTotal']) && $_SESSION['cartTotal'] > 0): ?>
@@ -78,7 +79,7 @@
 
                 <li class="nav-item">
                     <?php if(isset($_SESSION['user'])): ?>
-                        <a href="<?= ROOT ?>shop/logout" class="nav-link text-light me-2 ms-2">Salir</a>
+                        <a href="<?= ROOT ?>shop/logout" class="nav-link text-light me-2 ms-2"  style="display: inline-block">Cerrar sesión</a>
                     <?php else: ?>
                         <a href="<?= ROOT ?>login" class="nav-link text-light me-2 ms-2">Iniciar sesión</a>
                     <?php endif; ?>
@@ -86,9 +87,8 @@
 
             </ul>
         </div>
+
         <?php endif; ?>
-
-
 
 
         <?php if(isset($data['admin']) && $data['admin']): ?>

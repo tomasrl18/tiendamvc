@@ -46,8 +46,8 @@ class Application
                 if(strlen($this->url_action) == 0) {
                     $this->url_controller->index();
                 } else {
-                    header('HTTP/1.0 404 Not Found');
-
+                    header('HTTP/1.0 404 Not Found', true, 404);
+                    //header('location:' . ROOT);
                     // Tratamos el error producido cuando creemos el controlador de Error
                 }
             }

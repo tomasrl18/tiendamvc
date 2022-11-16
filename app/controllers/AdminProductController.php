@@ -347,7 +347,6 @@ class AdminProductController extends Controller
 
                     move_uploaded_file($_FILES['image']['tmp_name'], 'img/products/' . $image);
                     Validate::resizeImage($image, 240);
-
                 } else {
                     array_push($errors, 'El formato de imagen no es aceptado');
                 }

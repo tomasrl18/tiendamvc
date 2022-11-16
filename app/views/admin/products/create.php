@@ -84,8 +84,8 @@
                            placeholder="Escribe los conocimientos necesarios previos"
                            value="<?= $data['data']['necesites'] ?? '' ?>">
                 </div>
-
             </div>
+
             <div class="form-group text-left">
                 <label for="price">Precio del producto:</label>
 

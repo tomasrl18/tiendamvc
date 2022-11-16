@@ -130,6 +130,7 @@ class ShopController extends Controller
                         'colorButton'	=> 'btn-success',
                         'textButton'	=> 'Regresar'
                     ];
+
                     $this->view('mensaje', $data);
                 } else {
                     $data = [
