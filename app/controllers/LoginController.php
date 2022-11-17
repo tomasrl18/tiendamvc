@@ -137,7 +137,7 @@ class LoginController extends Controller
 
             // Expresión regular (regex) para la contraseña de usuario normal
             // En el if, un poco más abajo, explica lo que hace
-            $pattern = '/^(?=.*\d)(?=.*[\x{0021}-\x{002b}\x{003c}-\x{0040}])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/u';
+            $pattern = '/(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/';
 
             $dataForm = [
                 'firstName'   => $firstName,
@@ -177,9 +177,9 @@ class LoginController extends Controller
             }
 
             if( ! preg_match($pattern, $password)) {
-                array_push($errors, 'La contraseña debe tener al entre 8 y 16 caracteres, 
-                                                    al menos un dígito, una minúscula, una mayúscula 
-                                                    y un carácter no alfanumérico.');
+                array_push($errors, 'La contraseña debe tener, al menos, 8 caracteres, 
+                                                    un dígito, una minúscula, una mayúscula 
+                                                    y un carácter especial.');
             }
 
             if (empty($address)) {
@@ -274,7 +274,6 @@ class LoginController extends Controller
 
             // Expresión regular (regex) para la contraseña de usuario normal
             // En el if, un poco más abajo, explica lo que hace
-            //$pattern = '/^(?=.*\d)(?=.*[\x{0021}-\x{002b}\x{003c}-\x{0040}])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/u';
             $pattern = '/(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/';
 
             if(empty($id)) {

@@ -1,7 +1,7 @@
 <?php include_once(VIEWS . 'header.php') ?>
     <div class="card" id="container">
 
-        <nav aria-label="breadcrumb">
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">Iniciar sesión</li>
                 <li class="breadcrumb-item"><a href="#">Datos de envío</a></li>

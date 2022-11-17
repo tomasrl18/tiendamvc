@@ -122,7 +122,9 @@ class AdminProductController extends Controller
                 if (empty($necesites)) {
                     array_push($errors, 'Los requisitos del curso son necesarios');
                 }
-            } elseif ($type == 2) {
+            }
+
+            if ($type == 2) {
                 if (empty($author)) {
                     array_push($errors, 'El autor del libro es necesario');
                 }
@@ -289,7 +291,7 @@ class AdminProductController extends Controller
                 array_push($errors, 'El descuento del producto debe de ser un número');
             }
 
-            if (! is_numeric($send)) {
+            if ( ! is_numeric($send)) {
                 array_push($errors, 'Los gastos de envío del producto deben de ser numéricos');
             }
 
@@ -297,7 +299,7 @@ class AdminProductController extends Controller
                 array_push($errors, 'El descuento no puede ser mayor que el precio');
             }
 
-            if(!empty($published)) {
+            if( ! empty($published)) {
                 if ( ! Validate::date($published) ) {
                     array_push($errors, 'La fecha o su formato no es correcto');
                 } elseif ( ! Validate::dateDif($published)) {
@@ -319,7 +321,9 @@ class AdminProductController extends Controller
                 if (empty($necesites)) {
                     array_push($errors, 'Los requisitos del curso son necesarios');
                 }
-            } elseif ($type == 2) {
+            }
+
+            if ($type == 2) {
                 if (empty($author)) {
                     array_push($errors, 'El autor del libro es necesario');
                 }

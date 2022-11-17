@@ -11,6 +11,7 @@ class Cart
 
     public function verifyProduct($product_id , $user_id)
     {
+        // El state = 0 es necesario para que se vean los productos
         $sql = 'SELECT * FROM carts WHERE product_id=:product_id AND user_id=:user_id AND state=0';
 
         $query = $this->db->prepare($sql);

@@ -1,7 +1,7 @@
 <?php include_once(VIEWS . 'header.php') ?>
 
 <div class="card" id="container">
-    <nav aria-label="breadcrumb">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Iniciar sesión</a></li>
             <li class="breadcrumb-item"><a href="<?= ROOT ?>cart/checkout">Datos de envío</a></li>
@@ -20,17 +20,11 @@
     </div>
 
     <div class="card-body">
-        <?php $verify = false; $subtotal = 0; $send = 0; $discount = 0 ?>
-
-        Modo de Pago: <?= $data['payment'] ?><br>
-        Nombre: <?= $data['user']->first_name ?> <?= $data['user']->last_name_1 ?> <?= $data['user']->last_name_2 ?><br>
-        Dirección: <?= $data['user']->address ?><br>
-        Ciudad:	<?= $data['user']->city ?><br>
-        Estado: <?= $data['user']->state ?><br>
-        Código Postal: <?= $data['user']->zipcode ?><br>
-        País: <?= $data['user']->country ?><br>
 
         <table class="table table-stripped" width="100%">
+            <?php $verify = false; $subtotal = 0; $send = 0; $discount = 0 ?>
+
+
 
             <tr>
                 <th width="12%">Producto</th>
@@ -54,7 +48,16 @@
 
             <?php endforeach ?>
             <?php $total = $subtotal - $discount + $send ?>
+
         </table>
+
+        Modo de Pago: <?= $data['payment'] ?><br>
+        Nombre: <?= $data['user']->first_name ?> <?= $data['user']->last_name_1 ?> <?= $data['user']->last_name_2 ?><br>
+        Dirección: <?= $data['user']->address ?><br>
+        Ciudad:	<?= $data['user']->city ?><br>
+        Estado: <?= $data['user']->state ?><br>
+        Código Postal: <?= $data['user']->zipcode ?><br>
+        País: <?= $data['user']->country ?><br>
         <hr>
         <table width="100%" class="text-right">
 

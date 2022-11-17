@@ -144,6 +144,7 @@ class ShopController extends Controller
                         'colorButton' => 'btn-danger',
                         'textButton' => 'Regresar'
                     ];
+
                     $this->view('mensaje', $data);
                 }
             } else {
@@ -153,11 +154,12 @@ class ShopController extends Controller
                     'errors' => $errors,
                     'active' => 'contact',
                 ];
+
                 $this->view('shop/contact', $data);
             }
         } else {
 
-            $session = new Session();
+            //$session = new Session();
 
             /*if ($session->getLogin()) {*/
 

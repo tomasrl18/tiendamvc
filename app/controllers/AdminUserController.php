@@ -45,7 +45,8 @@ class AdminUserController extends Controller
 
             // Expresión regular (regex) para la contraseña de administrador
             // En el if, un poco más abajo, explica lo que hace
-            $pattern = '/^(?=.*\d)(?=.*[\x{0021}-\x{002b}\x{003c}-\x{0040}])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/u';
+            //$pattern = '/^(?=.*\d)(?=.*[\x{0021}-\x{002b}\x{003c}-\x{0040}])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/u';
+            $pattern = '/(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/';
 
             $dataForm = [
                 'name' => $name,
@@ -65,11 +66,11 @@ class AdminUserController extends Controller
                 array_push($errors, 'La clave de acceso es requerida');
             }
 
-            /*if( ! preg_match($pattern, $password)) {
-                array_push($errors, 'La contraseña debe tener al entre 8 y 16 caracteres, 
-                                                    al menos un dígito, una minúscula, una mayúscula 
-                                                    y un carácter no alfanumérico.');
-            }*/
+            if( ! preg_match($pattern, $password)) {
+                array_push($errors, 'La contraseña debe tener, al menos, 8 caracteres, 
+                                                    un dígito, una minúscula, una mayúscula 
+                                                    y un carácter especial.');
+            }
 
             if(empty($password2)) {
                 array_push($errors, 'Repetir la clave de acceso es requerida');
@@ -135,6 +136,10 @@ class AdminUserController extends Controller
             $password2 = $_POST['password2'] ?? '';
             $status = $_POST['status'] ?? '';
 
+            // Expresión regular (regex) para la contraseña de administrador
+            // En el if, un poco más abajo, explica lo que hace
+            $pattern = '/(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/';
+
             if(empty($name)) {
                 array_push($errors, 'El nombre de usuario es requerido');
             }
@@ -151,6 +156,12 @@ class AdminUserController extends Controller
                 if($password != $password2) {
                     array_push($errors, 'Las contraseñas no coinciden');
                 }
+            }
+
+            if( ! preg_match($pattern, $password)) {
+                array_push($errors, 'La contraseña debe tener, al menos, 8 caracteres, 
+                                                    un dígito, una minúscula, una mayúscula 
+                                                    y un carácter especial.');
             }
 
             if( ! $errors) {

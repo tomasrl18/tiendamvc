@@ -14,7 +14,6 @@
                 <label for="type">Tipo de producto</label>
                 <select name="type" id="type" class="form-control">
 
-
                     <?php foreach($data['type'] as $type): ?>
                         <option value="<?= $type->value ?>"
                             <?= (isset($data['data']['type']) && $data['data']['type'] == $type->value) ? ' selected' : ''?>
