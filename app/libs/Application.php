@@ -49,6 +49,9 @@ class Application
                     header('HTTP/1.0 404 Not Found', true, 404);
                     //header('location:' . ROOT);
                     // Tratamos el error producido cuando creemos el controlador de Error
+                    require_once ('../app/controllers/ErrorController.php');
+                    $page = new ErrorController();
+                    $page->index();
                 }
             }
 
