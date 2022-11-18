@@ -25,13 +25,11 @@
                 <div class="form-group text-left">
 
                     <?php foreach ($data['payments'] as $payment): ?>
-
                         <div class="radio">
                             <label>
                                 <input type="radio" name="payment"> <?= $payment->tipo ?>
                             </label>
                         </div>
-
                     <?php endforeach; ?>
 
                 </div>

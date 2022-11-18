@@ -57,7 +57,9 @@
             <input type="hidden" name="user_id" value="<?= $data['user_id'] ?>">
 
         </table>
+
         <hr>
+
         <table width="100%" class="text-end">
 
             <tr>

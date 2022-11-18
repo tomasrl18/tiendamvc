@@ -52,7 +52,7 @@ class AdminSales
     public function details($user_id, $date)
     {
         $sql = 'SELECT c.user_id as user, c.product_id as product, c.quantity as quantity, 
-                    c.send as send, c.discount as discount, p.price as price, p.image as image, p.description as description,
+                    c.send as send, c.discount as discount, c.price as price, p.image as image, p.description as description,
                     p.name as name FROM carts as c, products as p 
                        WHERE c.user_id=:user_id AND state=1 AND c.product_id=p.id AND c.date=:date';
 

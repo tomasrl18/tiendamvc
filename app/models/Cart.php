@@ -111,19 +111,53 @@ class Cart
 
     public function closeCart($id, $state)
     {
-        $sql = 'UPDATE carts SET state=:state, date=:date WHERE user_id=:user_id AND state=0';
+        $sql2 = 'SELECT carts.product_id, products.price 
+                FROM carts 
+                JOIN products 
+                ON carts.product_id=products.id 
+                WHERE carts.state=0 
+                AND carts.user_id=:id';
 
-        $query = $this->db->prepare($sql);
+        $query2 = $this->db->prepare($sql2);
 
-        $new_time = date("Y-m-d H:i:s", strtotime('+2 hours'));
+        $query2->execute([':id' => $id]);
 
-        $params = [
+        $products = $query2->fetchAll(PDO::FETCH_OBJ);
+
+        $verify = true;
+
+        foreach ($products as $product) {
+            $sql = 'UPDATE carts SET state=:state, price=:price, date=:date WHERE user_id=:user_id AND state=0 AND product_id=:product_id';
+
+            $query = $this->db->prepare($sql);
+
+            $new_time = date("Y-m-d H:i:s", strtotime('+2 hours'));
+
+            $params = [
+                ':user_id' => $id,
+                ':state' => $state,
+                ':date' => $new_time,
+                ':price' => $product->price,
+                ':product_id' => $product->product_id,
+            ];
+
+            $verify = $query->execute($params);
+        }
+
+        //$sql = 'UPDATE carts SET state=:state, date=:date WHERE user_id=:user_id AND state=0';
+
+        //$query = $this->db->prepare($sql);
+
+        //$new_time = date("Y-m-d H:i:s", strtotime('+2 hours'));
+
+        /*$params = [
           ':user_id' => $id,
           ':state' => $state,
           ':date' => $new_time,
-        ];
+        ];*/
 
-        return $query->execute($params);
+        //return $query->execute($params);
+        return $verify;
     }
 
     public function getPayments()
